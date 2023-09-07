@@ -1,17 +1,17 @@
 import * as yup from 'yup';
 
-export default async function validateTodo(ctx) {
+export default async function validateTodo(ctx, next) {
     try {
         const data = ctx.request.body;
+        console.log(data);
         let schema = yup.object().shape({
-            title: yup.string(),
-            // completed: yup.boolean(),
+            title: yup.string().required().trim(),
+            completed: yup.boolean(),
         });
-
         await schema.validate(data);
-        return await next();
+        return next();
     } catch (e) {
-        ctx.status = 500;
+        ctx.status = 400;
         ctx.body = {
             success: false,
             errors: e.errors,

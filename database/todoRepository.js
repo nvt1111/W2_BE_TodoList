@@ -22,7 +22,7 @@ export function updateById(id) {
         if (todo.id === parseInt(id)) {
             return {
                 ...todo,
-                completed: true
+                completed: !todo.completed
             }
         }
         return todo;
