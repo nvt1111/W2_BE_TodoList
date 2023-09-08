@@ -10,7 +10,6 @@ export function getAll() {
 
 export function add(data) {
     const todo = { id: parseInt(Date.now()), ...data };
-
     const dataObject = [{ ...todo }, ...todos]
     //data: Object
     writeFileSync(dataObject);
@@ -18,6 +17,7 @@ export function add(data) {
 }
 
 export function updateById(id) {
+    //todo: tìm cách update khác đi nhé , không nên dùng map ở chỗ này 
     const todoList = todos.map(todo => {
         if (todo.id === parseInt(id)) {
             return {

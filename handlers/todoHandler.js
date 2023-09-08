@@ -11,7 +11,6 @@ const getTodos = (ctx) => {
         ctx.body = {
             data: data
         };
-
     } catch (e) {
         ctx.status = 404;
         ctx.body = {
